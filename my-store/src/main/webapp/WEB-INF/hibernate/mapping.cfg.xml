@@ -4,6 +4,8 @@
           "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<mapping class="com.kaplan.coding.mystore/persistence/domain" />		<!-- one entry for pojp -->
+		<mapping class="com.kaplan.coding.mystore.persistence.domain.Product" />		
+		<mapping class="com.kaplan.coding.mystore.persistence.domain.Orders" />		
+		<mapping class="com.kaplan.coding.mystore.persistence.domain.OrderItem" />		
 	</session-factory>
 </hibernate-configuration>
