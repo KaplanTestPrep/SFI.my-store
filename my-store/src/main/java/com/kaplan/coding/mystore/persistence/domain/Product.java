@@ -14,9 +14,14 @@ import javax.persistence.Table;
 @Table(name = "PRODUCT")
 public class Product {
 
+	@Id
+	@Column(name ="SKU")
 	private Integer sku; //SKU; // NUMBER(10,0)
+	@Column(name ="NAME")
 	private String name; //NAME; // VARCHAR2(20 BYTE)
+	@Column(name ="QUANTITY")
 	private Integer quantity; //QUANTITY; // NUMBER(5,0)
+	@Column(name ="UNIT_PRICE")
 	private Integer unitPrice; //UNIT_PRICE; // NUMBER(5,2)
 	//#############################
 	@Override
@@ -24,29 +29,28 @@ public class Product {
 		return "Product [sku=" + sku + ", name=" + name + ", quantity="
 				+ quantity + ", unitPrice=" + unitPrice + "]";
 	}
-	@Id
-	@Column(name ="SKU")
+	
 	public Integer getSku() {
 		return sku;
 	}
 	public void setSku(Integer sku) {
 		this.sku = sku;
 	}//------------------
-	@Column(name ="NAME")
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}//---------------------
-	@Column(name ="QUANTITY")
+	
 	public Integer getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}//--------------------
-	@Column(name ="UNIT_PRICE")
+	
 	public Integer getUnitPrice() {
 		return unitPrice;
 	}
