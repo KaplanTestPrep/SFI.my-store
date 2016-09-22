@@ -22,6 +22,7 @@ public class Orders {
 	private Integer amount;// AMOUNT; //	NUMBER(5,2)
 	@Column(name ="CREATED_DATE")
 	private Date createdDate; // CREATED_DATE
+	
 	//#######################################
 	@Override
 	public String toString() {
