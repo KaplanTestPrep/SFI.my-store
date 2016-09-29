@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,9 +18,10 @@ import javax.persistence.Table;
 @Table(name = "ORDER_ITEM")
 public class Orders {
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_ORDER")
 	@Column(name ="ID")
 	private Integer orderId; // ID; //	NUMBER(10,0)
-	@Column(name ="AMOUNT")
+	@Column(name ="AMOUNT",precision=2,scale=5)
 	private Integer amount;// AMOUNT; //	NUMBER(5,2)
 	@Column(name ="CREATED_DATE")
 	private Date createdDate; // CREATED_DATE
