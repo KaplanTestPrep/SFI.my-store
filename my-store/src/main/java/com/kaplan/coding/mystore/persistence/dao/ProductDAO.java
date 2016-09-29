@@ -40,4 +40,6 @@ public interface ProductDAO {
 	 */
 	public List<Product> getAll();
 
+	public void saveOrUpdate(Product product);
+
 }

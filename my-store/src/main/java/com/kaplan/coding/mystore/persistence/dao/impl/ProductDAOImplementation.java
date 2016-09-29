@@ -22,14 +22,16 @@ public class ProductDAOImplementation implements ProductDAO {
 		// TODO Auto-generated method stub
 
 	}
+	public void Update(){
+		
+	}
 
 	/* (non-Javadoc)
 	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#update(com.kaplan.coding.mystore.persistence.domain.Product)
 	 */
 	@Override
-	public Boolean update(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+	public void saveOrUpdate(Product product) {
+		
 	}
 
 	/* (non-Javadoc)
