@@ -9,7 +9,7 @@ import com.kaplan.coding.mystore.persistence.dao.ProductDAO;
 import com.kaplan.coding.mystore.persistence.domain.Product;
 
 /**
- * @author JuMehta
+ * @author JMehta
  *
  */
 public class ProductDAOImplementation implements ProductDAO {
