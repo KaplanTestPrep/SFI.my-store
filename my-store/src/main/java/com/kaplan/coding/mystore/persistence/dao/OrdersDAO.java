@@ -10,7 +10,7 @@ import com.kaplan.coding.mystore.persistence.domain.Orders;
 
 /**
  *  * Interface for Order DAO
- * @author NJahan
+ * @author Jmehta
  *
  */
 public interface OrdersDAO {
@@ -40,22 +40,13 @@ public interface OrdersDAO {
 	 */
 
 	public List<Orders> getAll();
-	
+
 	
 	/**
 	 * Method for saving or updating Orders.
 	 * @param orders
 	 */
 	public void saveOrUpdate(Orders orders);
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 }

@@ -6,7 +6,8 @@ package com.kaplan.coding.mystore.persistence.dao.impl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import com.kaplan.coding.mystore.persistence.dao.OrdersDAO;
 import com.kaplan.coding.mystore.persistence.domain.Orders;
 
@@ -15,14 +16,24 @@ import com.kaplan.coding.mystore.persistence.domain.Orders;
  *
  */
 public class OrdersDAOImplementation implements OrdersDAO {
-private SessionFactory sessionFactory;
+
+
+
+    
+    @Autowired
+    @Qualifier("oracleSessionFactory")
+    private SessionFactory sessionFactory;
+
 	/* (non-Javadoc)
 	 * @see com.kaplan.coding.mystore.persistence.dao.OrdersDAO#save(com.kaplan.coding.mystore.persistence.domain.Orders)
+	 * 
 	 */
 	@Override
 	public Boolean save(Orders orders) {
-		// TODO Auto-generated method stub
-		return null;
+	    //true/false  save/update ||or save or update | delete 
+	    this.sessionFactory.getCurrentSession().save(orders);
+		// TODO Auto-generated method stu
+		return null; // return a boolean
 	}
 
 	/* (non-Javadoc)

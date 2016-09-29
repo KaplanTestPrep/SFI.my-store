@@ -12,7 +12,7 @@ import com.kaplan.coding.mystore.persistence.domain.Orders;
 import com.kaplan.coding.mystore.persistence.domain.Product;
 
 /**
- * @author JuMehta
+ * @author JMehta
  *
  */
 public class ProductDAOImplementation implements ProductDAO {
