@@ -8,7 +8,6 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
 import com.kaplan.coding.mystore.persistence.dao.OrdersDAO;
 import com.kaplan.coding.mystore.persistence.domain.Orders;
 
@@ -17,10 +16,14 @@ import com.kaplan.coding.mystore.persistence.domain.Orders;
  *
  */
 public class OrdersDAOImplementation implements OrdersDAO {
+
+
+
     
     @Autowired
     @Qualifier("oracleSessionFactory")
     private SessionFactory sessionFactory;
+
 	/* (non-Javadoc)
 	 * @see com.kaplan.coding.mystore.persistence.dao.OrdersDAO#save(com.kaplan.coding.mystore.persistence.domain.Orders)
 	 * 
@@ -60,4 +63,10 @@ public class OrdersDAOImplementation implements OrdersDAO {
 		return null;
 	}
 
+	@Override
+	public void saveOrUpdate(Orders orders) {
+		// TODO Auto-generated method stub
+		this.sessionFactory.getCurrentSession().saveOrUpdate(orders);
+		
+	}
 }
