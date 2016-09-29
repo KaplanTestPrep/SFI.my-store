@@ -2,6 +2,8 @@ package com.kaplan.coding.mystore.persistence.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,13 +17,14 @@ import javax.persistence.Table;
 public class Product {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PRODUCT")
 	@Column(name ="SKU")
 	private Integer sku; //SKU; // NUMBER(10,0)
-	@Column(name ="NAME")
+	@Column(name ="NAME", unique=true, length=20)
 	private String name; //NAME; // VARCHAR2(20 BYTE)
-	@Column(name ="QUANTITY")
+	@Column(name ="QUANTITY", precision = 5)
 	private Integer quantity; //QUANTITY; // NUMBER(5,0)
-	@Column(name ="UNIT_PRICE")
+	@Column(name ="UNIT_PRICE", precision = 5,scale = 2)
 	private Integer unitPrice; //UNIT_PRICE; // NUMBER(5,2)
 	//#############################
 	@Override
