@@ -5,7 +5,10 @@ package com.kaplan.coding.mystore.persistence.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+
 import com.kaplan.coding.mystore.persistence.dao.ProductDAO;
+import com.kaplan.coding.mystore.persistence.domain.Orders;
 import com.kaplan.coding.mystore.persistence.domain.Product;
 
 /**
@@ -13,7 +16,7 @@ import com.kaplan.coding.mystore.persistence.domain.Product;
  *
  */
 public class ProductDAOImplementation implements ProductDAO {
-
+private SessionFactory sessionFactory;
 	/* (non-Javadoc)
 	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#save(com.kaplan.coding.mystore.persistence.domain.Product)
 	 */
@@ -49,5 +52,10 @@ public class ProductDAOImplementation implements ProductDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Override
+	public void saveOrUpdate(Product product) {
+		// TODO Auto-generated method stub
+		this.sessionFactory.getCurrentSession().saveOrUpdate(product);
+		
+	}
 }

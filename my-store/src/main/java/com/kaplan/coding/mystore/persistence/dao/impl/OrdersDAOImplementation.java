@@ -5,6 +5,8 @@ package com.kaplan.coding.mystore.persistence.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+
 import com.kaplan.coding.mystore.persistence.dao.OrdersDAO;
 import com.kaplan.coding.mystore.persistence.domain.Orders;
 
@@ -13,7 +15,7 @@ import com.kaplan.coding.mystore.persistence.domain.Orders;
  *
  */
 public class OrdersDAOImplementation implements OrdersDAO {
-
+private SessionFactory sessionFactory;
 	/* (non-Javadoc)
 	 * @see com.kaplan.coding.mystore.persistence.dao.OrdersDAO#save(com.kaplan.coding.mystore.persistence.domain.Orders)
 	 */
@@ -50,4 +52,10 @@ public class OrdersDAOImplementation implements OrdersDAO {
 		return null;
 	}
 
+	@Override
+	public void saveOrUpdate(Orders orders) {
+		// TODO Auto-generated method stub
+		this.sessionFactory.getCurrentSession().saveOrUpdate(orders);
+		
+	}
 }
