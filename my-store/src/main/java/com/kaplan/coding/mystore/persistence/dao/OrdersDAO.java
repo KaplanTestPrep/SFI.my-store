@@ -47,6 +47,11 @@ public interface OrdersDAO {
 	 * @param orders
 	 */
 	public void saveOrUpdate(Orders orders);
-	
+
+	void delete(Orders orders);
+	/**
+	 * Method for delete Orders.
+	 * @param orders
+	 */
 
 }

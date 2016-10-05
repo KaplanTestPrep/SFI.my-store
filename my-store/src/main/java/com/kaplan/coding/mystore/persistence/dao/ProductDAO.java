@@ -41,4 +41,15 @@ public interface ProductDAO {
 	 */
 	public List<Product> getAll();
 	public void saveOrUpdate(Product product);
+	/**
+	 * Method to save or update Product
+	 * 
+	 * @param product
+	 */
+    public void delete(Product product);
+    /**
+	 * Method to delete Product
+	 * 
+	 * @param product
+	 */
 }
