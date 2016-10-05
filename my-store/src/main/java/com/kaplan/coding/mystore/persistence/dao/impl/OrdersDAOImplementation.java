@@ -69,4 +69,10 @@ public class OrdersDAOImplementation implements OrdersDAO {
 		this.sessionFactory.getCurrentSession().saveOrUpdate(orders);
 		
 	}
+	@Override
+	public void delete(Orders orders) {
+		
+		this.sessionFactory.getCurrentSession().delete(orders);
+		
+	}
 }
