@@ -2,6 +2,7 @@ package com.kaplan.coding.mystore.persistence.dao;
 
 import java.util.List;
 
+import com.kaplan.coding.mystore.persistence.domain.Orders;
 import com.kaplan.coding.mystore.persistence.domain.Product;
 
 /**
@@ -39,5 +40,5 @@ public interface ProductDAO {
 	 * 
 	 */
 	public List<Product> getAll();
-
+	public void saveOrUpdate(Product product);
 }
