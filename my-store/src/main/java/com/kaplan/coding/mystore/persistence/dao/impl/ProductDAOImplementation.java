@@ -6,6 +6,8 @@ package com.kaplan.coding.mystore.persistence.dao.impl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.kaplan.coding.mystore.persistence.dao.ProductDAO;
 import com.kaplan.coding.mystore.persistence.domain.Orders;
@@ -16,14 +18,17 @@ import com.kaplan.coding.mystore.persistence.domain.Product;
  *
  */
 public class ProductDAOImplementation implements ProductDAO {
-private SessionFactory sessionFactory;
+
+	@Autowired
+    @Qualifier("oracleSessionFactory")
+	private SessionFactory sessionFactory;
 	/* (non-Javadoc)
 	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#save(com.kaplan.coding.mystore.persistence.domain.Product)
 	 */
 	@Override
 	public void save(Product product) {
-		// TODO Auto-generated method stub
-
+		this.sessionFactory.getCurrentSession().save(product);
+     
 	}
 
 	/* (non-Javadoc)
@@ -31,7 +36,7 @@ private SessionFactory sessionFactory;
 	 */
 	@Override
 	public Boolean update(Product product) {
-		// TODO Auto-generated method stub
+		this.sessionFactory.getCurrentSession().update(product);
 		return null;
 	}
 
@@ -41,6 +46,8 @@ private SessionFactory sessionFactory;
 	@Override
 	public Product findById(Integer id) {
 		// TODO Auto-generated method stub
+	
+		
 		return null;
 	}
 
@@ -57,5 +64,16 @@ private SessionFactory sessionFactory;
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().saveOrUpdate(product);
 		
+		
 	}
+	
+	@Override
+	public void delete(Product product){
+		
+		this.sessionFactory.getCurrentSession().delete(product);
+	}
+	
+	
+	
+	
 }

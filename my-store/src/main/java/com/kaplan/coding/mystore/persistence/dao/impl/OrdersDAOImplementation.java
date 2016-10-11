@@ -16,9 +16,6 @@ import com.kaplan.coding.mystore.persistence.domain.Orders;
  *
  */
 public class OrdersDAOImplementation implements OrdersDAO {
-
-
-
     
     @Autowired
     @Qualifier("oracleSessionFactory")
@@ -30,10 +27,14 @@ public class OrdersDAOImplementation implements OrdersDAO {
 	 */
 	@Override
 	public Boolean save(Orders orders) {
-	    //true/false  save/update ||or save or update | delete 
-	    this.sessionFactory.getCurrentSession().save(orders);
-		// TODO Auto-generated method stu
-		return null; // return a boolean
+	    Boolean returnBoolean;
+	    try {
+	        this.sessionFactory.getCurrentSession().save(orders);
+	        returnBoolean = true;
+        } catch (Exception e) {
+            returnBoolean = false;
+        }
+		return returnBoolean; // return a boolean
 	}
 
 	/* (non-Javadoc)
@@ -41,8 +42,14 @@ public class OrdersDAOImplementation implements OrdersDAO {
 	 */
 	@Override
 	public Boolean update(Orders orders) {
-		// TODO Auto-generated method stub
-		return null;
+	    Boolean returnBoolean;
+        try {
+            this.sessionFactory.getCurrentSession().update(orders);
+            returnBoolean = true;
+        } catch (Exception e) {
+            returnBoolean = false;
+        }
+        return returnBoolean; // return a boolean
 	}
 
 	/* (non-Javadoc)
@@ -50,8 +57,14 @@ public class OrdersDAOImplementation implements OrdersDAO {
 	 */
 	@Override
 	public Orders findById(Integer id) {
+	    Orders tempOrders = null;
+	    try {
+	        tempOrders =    (Orders) this.sessionFactory.getCurrentSession().get(Orders.class, id);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
 		// TODO Auto-generated method stub
-		return null;
+		return tempOrders;
 	}
 
 	/* (non-Javadoc)
@@ -67,6 +80,12 @@ public class OrdersDAOImplementation implements OrdersDAO {
 	public void saveOrUpdate(Orders orders) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().saveOrUpdate(orders);
+		
+	}
+	@Override
+	public void delete(Orders orders) {
+		
+		this.sessionFactory.getCurrentSession().delete(orders);
 		
 	}
 }
