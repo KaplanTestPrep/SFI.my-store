@@ -40,7 +40,7 @@ public interface ProductDAO {
 	 * 
 	 */
 	public List<Product> getAll();
-	public void saveOrUpdate(Product product);
+	public Boolean saveOrUpdate(Product product);
 	/**
 	 * Method to save or update Product
 	 * 

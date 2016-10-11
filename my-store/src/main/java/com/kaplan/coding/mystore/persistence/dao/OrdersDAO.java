@@ -46,7 +46,7 @@ public interface OrdersDAO {
 	 * Method for saving or updating Orders.
 	 * @param orders
 	 */
-	public void saveOrUpdate(Orders orders);
+	public Boolean saveOrUpdate(Orders orders);
 
 	void delete(Orders orders);
 	/**
