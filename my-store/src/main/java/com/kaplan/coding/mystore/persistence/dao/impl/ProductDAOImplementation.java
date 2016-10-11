@@ -15,9 +15,10 @@ import com.kaplan.coding.mystore.persistence.domain.Product;
 
 /**
  * @author JMehta
+ * @param <returnBoolean>
  *
  */
-public class ProductDAOImplementation implements ProductDAO {
+public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 
 	@Autowired
     @Qualifier("oracleSessionFactory")
@@ -28,8 +29,16 @@ public class ProductDAOImplementation implements ProductDAO {
 	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#save(com.kaplan.coding.mystore.persistence.domain.Product)
 	 */
 	@Override
-	public void save(Product product) {
+	public Boolean save(Product product) {
+		 Boolean returnBoolean;
+		 try{
 		this.sessionFactory.getCurrentSession().save(product);
+		returnBoolean = true;
+		}
+		 catch (Exception e) {
+	            returnBoolean = false;
+	        }
+		return returnBoolean; // return a boolean
      
 	}
 
@@ -38,8 +47,16 @@ public class ProductDAOImplementation implements ProductDAO {
 	 */
 	@Override
 	public Boolean update(Product product) {
+		
+		Boolean returnBoolean;
+        try {
 		this.sessionFactory.getCurrentSession().update(product);
-		return null;
+		returnBoolean = true;
+        } 
+        catch (Exception e) {
+            returnBoolean = false;
+        }
+        return returnBoolean; // return a boolean
 	}
 
 	/* (non-Javadoc)
@@ -47,10 +64,15 @@ public class ProductDAOImplementation implements ProductDAO {
 	 */
 	@Override
 	public Product findById(Integer id) {
-		// TODO Auto-generated method stub
-	
 		
-		return null;
+		Product tempProduct = null;
+	    try {
+	    	tempProduct =    (Product) this.sessionFactory.getCurrentSession().get(Product.class, id);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+		// TODO Auto-generated method stub
+		return tempProduct;
 	}
 
 	/* (non-Javadoc)
