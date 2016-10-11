@@ -18,9 +18,10 @@ public interface ProductDAO {
 	 * Method to save Product
 	 * 
 	 * @param product
+	 * @return 
 	 */
 
-	public void save(Product product);
+	public Boolean save(Product product);
 
 	/**
 	 * Method to update Product
@@ -40,7 +41,7 @@ public interface ProductDAO {
 	 * 
 	 */
 	public List<Product> getAll();
-	public void saveOrUpdate(Product product);
+	public Boolean saveOrUpdate(Product product);
 	/**
 	 * Method to save or update Product
 	 * 
