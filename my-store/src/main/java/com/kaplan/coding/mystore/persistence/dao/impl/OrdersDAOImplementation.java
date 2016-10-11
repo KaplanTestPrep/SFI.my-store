@@ -91,10 +91,16 @@ public class OrdersDAOImplementation implements OrdersDAO {
     }//#####################################################
 
     @Override
-    public void saveOrUpdate(Orders orders) {
-        // TODO Auto-generated method stub
-        this.sessionFactory.getCurrentSession().saveOrUpdate(orders);
-
+    public Boolean saveOrUpdate(Orders orders) {
+        
+    	Boolean returnBoolean;
+        try {
+            this.currentSession.saveOrUpdate(orders);            
+            returnBoolean = true;
+        } catch (Exception e) {
+            returnBoolean = false;
+        }
+        return returnBoolean;
     }//#####################################################
 
     @Override
