@@ -5,6 +5,7 @@ package com.kaplan.coding.mystore.persistence.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,13 +55,9 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 	public Product findById(Integer sku) {
 		
 		Product tempProduct = null;
-	    try {
-	    	tempProduct =    (Product) this.sessionFactory.getCurrentSession().get(Product.class, sku);
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-		// TODO Auto-generated method stub
-		return tempProduct;
+	   
+	    	return tempProduct =    (Product) this.sessionFactory.getCurrentSession().get(Product.class, sku);
+        
 	}
 
 	/* (non-Javadoc)
@@ -68,8 +65,13 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 	 */
 	@Override
 	public List<Product> getAll() {
-		// TODO Auto-generated method stub
+		Criteria criteria = this.sessionFactory.getCurrentSession()
+				.createCriteria(Product.class);
+	
+		
 		return null;
+		
+		
 	}
 	
 	@Override
@@ -86,7 +88,16 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 		this.sessionFactory.getCurrentSession().delete(product);
 	}
 	
-	
+	@Override
+	public List<Product> findByExample (Product product){
+		return null;
+		
+	}
+	@Override
+	public List<Product> findByProperty(Product product){
+		return null;
+		
+	}
 	
 	
 }
