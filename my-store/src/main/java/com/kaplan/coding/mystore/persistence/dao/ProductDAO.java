@@ -53,4 +53,8 @@ public interface ProductDAO {
 	 * 
 	 * @param product
 	 */
+
+	public List<Product> findByExample(Product product);
+	public List<Product> findByProperty(Product product);
 }
+
