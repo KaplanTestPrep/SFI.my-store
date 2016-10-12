@@ -29,16 +29,10 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#save(com.kaplan.coding.mystore.persistence.domain.Product)
 	 */
 	@Override
-	public Boolean save(Product product) {
-		 Boolean returnBoolean;
-		 try{
+	public void save(Product product) {
+		 
 		this.sessionFactory.getCurrentSession().save(product);
-		returnBoolean = true;
-		}
-		 catch (Exception e) {
-	            returnBoolean = false;
-	        }
-		return returnBoolean; // return a boolean
+
      
 	}
 
@@ -46,28 +40,22 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#update(com.kaplan.coding.mystore.persistence.domain.Product)
 	 */
 	@Override
-	public Boolean update(Product product) {
+	public void update(Product product) {
 		
-		Boolean returnBoolean;
-        try {
+		
 		this.sessionFactory.getCurrentSession().update(product);
-		returnBoolean = true;
-        } 
-        catch (Exception e) {
-            returnBoolean = false;
-        }
-        return returnBoolean; // return a boolean
+		
 	}
 
 	/* (non-Javadoc)
 	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#findById(java.lang.Integer)
 	 */
 	@Override
-	public Product findById(Integer id) {
+	public Product findById(Integer sku) {
 		
 		Product tempProduct = null;
 	    try {
-	    	tempProduct =    (Product) this.sessionFactory.getCurrentSession().get(Product.class, id);
+	    	tempProduct =    (Product) this.sessionFactory.getCurrentSession().get(Product.class, sku);
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -85,16 +73,10 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 	}
 	
 	@Override
-	public Boolean saveOrUpdate(Product product) {
-		Boolean returnBoolean;
-        try {
-            this.currentSession.saveOrUpdate(product);            
-            returnBoolean = true;
-        } catch (Exception e) {
-            returnBoolean = false;
-        }
-        return returnBoolean;
+	public void saveOrUpdate(Product product) {
 		
+            this.currentSession.saveOrUpdate(product);            
+            
 		
 	}
 	
