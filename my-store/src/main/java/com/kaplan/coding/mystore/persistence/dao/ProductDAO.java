@@ -55,6 +55,7 @@ public interface ProductDAO {
 	 */
 
 	public List<Product> findByExample(Product product);
-	public List<Product> findByProperty(Product product);
+
+    public List<Product> findByProperty(String PropertyName, Object value);
 }
 
