@@ -5,12 +5,12 @@ package com.kaplan.coding.mystore.persistence.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.kaplan.coding.mystore.persistence.dao.ProductDAO;
-import com.kaplan.coding.mystore.persistence.domain.Orders;
 import com.kaplan.coding.mystore.persistence.domain.Product;
 
 /**
@@ -23,6 +23,8 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 	@Autowired
     @Qualifier("oracleSessionFactory")
 	private SessionFactory sessionFactory;
+    private Session currentSession = sessionFactory.getCurrentSession();
+
 	/* (non-Javadoc)
 	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#save(com.kaplan.coding.mystore.persistence.domain.Product)
 	 */
@@ -81,10 +83,17 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
-	public void saveOrUpdate(Product product) {
-		// TODO Auto-generated method stub
-		this.sessionFactory.getCurrentSession().saveOrUpdate(product);
+	public Boolean saveOrUpdate(Product product) {
+		Boolean returnBoolean;
+        try {
+            this.currentSession.saveOrUpdate(product);            
+            returnBoolean = true;
+        } catch (Exception e) {
+            returnBoolean = false;
+        }
+        return returnBoolean;
 		
 		
 	}
