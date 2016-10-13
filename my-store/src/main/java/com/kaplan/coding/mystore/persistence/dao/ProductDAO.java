@@ -21,7 +21,7 @@ public interface ProductDAO {
 	 * @return 
 	 */
 
-	public Boolean save(Product product);
+	public void save(Product product);
 
 	/**
 	 * Method to update Product
@@ -29,7 +29,7 @@ public interface ProductDAO {
 	 * @param product
 	 */
 	
-	public Boolean update(Product product);
+	public void update(Product product);
 	/**
 	 * Method to find product by ID
 	 * 
@@ -41,7 +41,7 @@ public interface ProductDAO {
 	 * 
 	 */
 	public List<Product> getAll();
-	public Boolean saveOrUpdate(Product product);
+	public void saveOrUpdate(Product product);
 	/**
 	 * Method to save or update Product
 	 * 
@@ -53,4 +53,9 @@ public interface ProductDAO {
 	 * 
 	 * @param product
 	 */
+
+	public List<Product> findByExample(Product product);
+
+    public List<Product> findByProperty(String PropertyName, Object value);
 }
+

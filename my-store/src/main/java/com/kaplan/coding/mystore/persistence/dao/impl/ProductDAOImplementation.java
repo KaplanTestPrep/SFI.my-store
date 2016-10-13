@@ -5,8 +5,11 @@ package com.kaplan.coding.mystore.persistence.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -20,91 +23,92 @@ import com.kaplan.coding.mystore.persistence.domain.Product;
  */
 public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 
-	@Autowired
+    @Autowired
     @Qualifier("oracleSessionFactory")
-	private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
     private Session currentSession = sessionFactory.getCurrentSession();
 
-	/* (non-Javadoc)
-	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#save(com.kaplan.coding.mystore.persistence.domain.Product)
-	 */
-	@Override
-	public Boolean save(Product product) {
-		 Boolean returnBoolean;
-		 try{
-		this.sessionFactory.getCurrentSession().save(product);
-		returnBoolean = true;
-		}
-		 catch (Exception e) {
-	            returnBoolean = false;
-	        }
-		return returnBoolean; // return a boolean
-     
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.kaplan.coding.mystore.persistence.dao.ProductDAO#save(com.kaplan.
+     * coding.mystore.persistence.domain.Product)
+     */
+    @Override
+    public void save(Product product) {
 
-	/* (non-Javadoc)
-	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#update(com.kaplan.coding.mystore.persistence.domain.Product)
-	 */
-	@Override
-	public Boolean update(Product product) {
-		
-		Boolean returnBoolean;
-        try {
-		this.sessionFactory.getCurrentSession().update(product);
-		returnBoolean = true;
-        } 
-        catch (Exception e) {
-            returnBoolean = false;
-        }
-        return returnBoolean; // return a boolean
-	}
+        this.sessionFactory.getCurrentSession().save(product);
 
-	/* (non-Javadoc)
-	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#findById(java.lang.Integer)
-	 */
-	@Override
-	public Product findById(Integer id) {
-		
-		Product tempProduct = null;
-	    try {
-	    	tempProduct =    (Product) this.sessionFactory.getCurrentSession().get(Product.class, id);
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-		// TODO Auto-generated method stub
-		return tempProduct;
-	}
+    }
 
-	/* (non-Javadoc)
-	 * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#getAll()
-	 */
-	@Override
-	public List<Product> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public Boolean saveOrUpdate(Product product) {
-		Boolean returnBoolean;
-        try {
-            this.currentSession.saveOrUpdate(product);            
-            returnBoolean = true;
-        } catch (Exception e) {
-            returnBoolean = false;
-        }
-        return returnBoolean;
-		
-		
-	}
-	
-	@Override
-	public void delete(Product product){
-		
-		this.sessionFactory.getCurrentSession().delete(product);
-	}
-	
-	
-	
-	
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.kaplan.coding.mystore.persistence.dao.ProductDAO#update(com.kaplan.
+     * coding.mystore.persistence.domain.Product)
+     */
+    @Override
+    public void update(Product product) {
+
+        this.sessionFactory.getCurrentSession().update(product);
+
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.kaplan.coding.mystore.persistence.dao.ProductDAO#findById(java.lang.
+     * Integer)
+     */
+    @Override
+    public Product findById(Integer sku) {
+
+        return (Product) this.sessionFactory.getCurrentSession().get(Product.class, sku);
+
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.kaplan.coding.mystore.persistence.dao.ProductDAO#getAll()
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Product> getAll() {
+        Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(Product.class);
+
+        return criteria.list();
+
+    }
+
+    @Override
+    public void saveOrUpdate(Product product) {
+
+        this.currentSession.saveOrUpdate(product);
+
+    }
+
+    @Override
+    public void delete(Product product) {
+
+        this.sessionFactory.getCurrentSession().delete(product);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Product> findByExample(Product product) {
+        Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(Product.class);
+        return criteria.add(Example.create(product)).list();
+
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Product> findByProperty(String PropertyName, Object value) {
+        Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(Product.class);
+        return criteria.add(Restrictions.eq(PropertyName, value)).list();
+    }
 }
