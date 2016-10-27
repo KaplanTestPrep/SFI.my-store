@@ -9,6 +9,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -100,7 +101,9 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Product> findByExample(Product product) {
+        
         Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(Product.class);
+        criteria.addOrder(Order.desc("sku"));
         return criteria.add(Example.create(product)).list();
 
     }

@@ -6,6 +6,7 @@ package com.kaplan.coding.mystore.persistence.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -21,17 +22,19 @@ import com.kaplan.coding.mystore.persistence.domain.Orders;
  */
 public class OrdersDAOImplementation implements OrdersDAO {
 
-
-
-
     @Autowired
     @Qualifier("oracleSessionFactory")
     private SessionFactory sessionFactory;
     private Session currentSession = sessionFactory.getCurrentSession();
-    //###########
-    /* (non-Javadoc)
-     * @see com.kaplan.coding.mystore.persistence.dao.OrdersDAO#save(com.kaplan.coding.mystore.persistence.domain.Orders)
+    private Criteria criteria = currentSession.createCriteria(Orders.class);
+
+    // ###########
+    /*
+     * (non-Javadoc)
      * 
+     * @see
+     * com.kaplan.coding.mystore.persistence.dao.OrdersDAO#save(com.kaplan.coding
+     * .mystore.persistence.domain.Orders)
      */
     @Override
     public Boolean save(Orders orders) {
@@ -43,10 +46,14 @@ public class OrdersDAOImplementation implements OrdersDAO {
             returnBoolean = false;
         }
         return returnBoolean; // return a boolean
-    }//#####################################################
+    }// #####################################################
 
-    /* (non-Javadoc)
-     * @see com.kaplan.coding.mystore.persistence.dao.OrdersDAO#update(com.kaplan.coding.mystore.persistence.domain.Orders)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.kaplan.coding.mystore.persistence.dao.OrdersDAO#update(com.kaplan
+     * .coding.mystore.persistence.domain.Orders)
      */
     @Override
     public Boolean update(Orders orders) {
@@ -58,59 +65,67 @@ public class OrdersDAOImplementation implements OrdersDAO {
             returnBoolean = false;
         }
         return returnBoolean; // return a boolean
-    }//#####################################################
+    }// #####################################################
 
-    /* (non-Javadoc)
-     * @see com.kaplan.coding.mystore.persistence.dao.OrdersDAO#findById(java.lang.Integer)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.kaplan.coding.mystore.persistence.dao.OrdersDAO#findById(java.lang
+     * .Integer)
      */
     @Override
     public Orders findById(Integer id) {
         Orders tempOrders = null;
         try {
-            tempOrders = (Orders) this.currentSession.createCriteria(Orders.class).add(Restrictions.eq("ID",id)).uniqueResult(); 
+            tempOrders = (Orders) this.currentSession
+                    .createCriteria(Orders.class)
+                    .add(Restrictions.eq("orderId", id)).uniqueResult();
             return tempOrders;
         } catch (Exception e) {
             return tempOrders;
         }
-    }//#####################################################
+    }// #####################################################
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.kaplan.coding.mystore.persistence.dao.OrdersDAO#getAll()
      */
     @SuppressWarnings("unchecked")
     @Override
     public List<Orders> getAll() {
-        List<Orders> tempOrdersList = new ArrayList<Orders>();
-        try {
-            tempOrdersList = (List<Orders>) currentSession.createCriteria(Orders.class).list();
-            return tempOrdersList;
-        } catch (Exception e) {
-            return tempOrdersList;
-        }
+        return (List<Orders>) this.criteria.list();
 
-    }//#####################################################
+    }// #####################################################
 
     @Override
     public Boolean saveOrUpdate(Orders orders) {
-        
-    	Boolean returnBoolean;
+        Boolean returnBoolean = false;
         try {
-            this.currentSession.saveOrUpdate(orders);            
+            this.currentSession.saveOrUpdate(orders);
             returnBoolean = true;
         } catch (Exception e) {
-            returnBoolean = false;
         }
         return returnBoolean;
-    }//#####################################################
+    }// #####################################################
 
     @Override
     public void delete(Orders orders) {
-        Orders result = (Orders) this.currentSession.createCriteria(Orders.class).add(Restrictions.idEq(orders.getOrderId())).uniqueResult();  
+        currentSession.delete(orders);
 
-        if (result != null)  
-        {  
-            currentSession.delete(result);  
-        } 
+    }// #####################################################
 
-    }//#####################################################
-}//##############--End of OrdersDAOImplementation--#######################################
+    @Override
+    public List<Orders> findByExamples(Orders instance) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Orders> findByProperty(String propertyName, Object value) {
+        return this.criteria.add(Restrictions.eq(propertyName, value)).list();
+    }
+}// ##############--End of
+// OrdersDAOImplementation--#######################################
