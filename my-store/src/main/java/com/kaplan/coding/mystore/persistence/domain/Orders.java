@@ -1,5 +1,6 @@
 package com.kaplan.coding.mystore.persistence.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,8 +17,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ORDERS")
-public class Orders {
-	@Id
+public class Orders implements Serializable {
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 3989204438621759507L;
+    @Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_ORDER")
 	@Column(name ="ID")
 	private Integer orderId; // ID; //	NUMBER(10,0)
