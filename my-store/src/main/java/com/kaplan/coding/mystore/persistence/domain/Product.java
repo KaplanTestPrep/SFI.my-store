@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +38,7 @@ public class Product implements Serializable{
 	@Column(name ="UNIT_PRICE", precision = 5,scale = 2)
 	private Integer unitPrice; //UNIT_PRICE; // NUMBER(5,2)
 	
-	@OneToMany()
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="product")
 	private Set<OrderItem> orderItem=new HashSet<OrderItem>(0);
 	//#############################
 	@Override
