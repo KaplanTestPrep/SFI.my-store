@@ -1,16 +1,15 @@
 package com.kaplan.coding.mystore.persistence.domain;
 
-import java.util.Date;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,9 +19,22 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ORDER_ITEM")
-public class OrderItem {
+public class OrderItem implements Serializable{
+    
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 3527409010727340848L;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PRODUCT")
+    @Column(name ="ORDER_ITEM_ID",scale=10)
     private Integer orderItemId; // ORDER_ITEM_ID;// NUMBER(10,0)
+    
+    @Column(name ="SOLD_QUANTITY",scale=5)
     private Integer quantity; // SOLD_QUANTITY;// NUMBER(5,0)
+    
+    @Column(name ="UNIT_PRICE",precision=2,scale=5)
     private Integer unitPrice; // UNIT_PRICE;// NUMBER(5,2)
     // private Integer productSku; //PRODUCT_SKU;// NUMBER(20,0)
 
