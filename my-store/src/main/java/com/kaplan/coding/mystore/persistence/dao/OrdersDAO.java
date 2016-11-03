@@ -53,5 +53,13 @@ public interface OrdersDAO {
 	 * Method for delete Orders.
 	 * @param orders
 	 */
-
+	/**
+	 * 
+	 * Find by example
+	 */
+	public List<Orders> findByExamples(Orders instance);
+	/**
+	 * Find by Properties
+	 */
+	public List<Orders> findByProperty(String propertyName, Object value);
 }

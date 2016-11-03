@@ -1,12 +1,15 @@
 package com.kaplan.coding.mystore.persistence.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -32,6 +35,9 @@ public class Product implements Serializable{
 	private Integer quantity; //QUANTITY; // NUMBER(5,0)
 	@Column(name ="UNIT_PRICE", precision = 5,scale = 2)
 	private Integer unitPrice; //UNIT_PRICE; // NUMBER(5,2)
+	
+	@OneToMany()
+	private Set<OrderItem> orderItem=new HashSet<OrderItem>(0);
 	//#############################
 	@Override
 	public String toString() {
