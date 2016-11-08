@@ -3,10 +3,12 @@
  */
 package com.kaplan.coding.mystore.business.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kaplan.coding.mystore.business.vo.ProductVo;
 import com.kaplan.coding.mystore.persistence.dao.ProductDAO;
+import com.kaplan.coding.mystore.persistence.domain.Product;
 
 /**
  * @author NJahan
@@ -21,9 +23,17 @@ public class ProductServiceImplementation implements ProductService {
    
     @Override
     public List<ProductVo> getAllProducts() {
-        // TODO Auto-generated method stub
-        productDAO.getAll();
-        return null;
+        List<ProductVo> results = new ArrayList<ProductVo>();
+       
+        List<Product> productsList = this.productDAO.getAll();
+        for(Product pojo : productsList){
+            ProductVo productVo = new ProductVo();
+            productVo.setProductSku(pojo.getSku());
+            //TODO: Transfor Pojo into VO here
+            results.add(productVo);
+        }
+ 
+        return results;
         
         
         
