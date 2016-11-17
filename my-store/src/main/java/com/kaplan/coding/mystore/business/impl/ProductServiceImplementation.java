@@ -15,43 +15,59 @@ import com.kaplan.coding.mystore.persistence.domain.Product;
  *
  */
 public class ProductServiceImplementation implements ProductService {
-    private ProductDAO productDAO; 
+    private ProductDAO productDAO;
 
-    /* (non-Javadoc)
-     * @see com.kaplan.coding.mystore.business.impl.ProductService#getAllProducts()
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.kaplan.coding.mystore.business.impl.ProductService#getAllProducts()
      */
-   
+
     @Override
     public List<ProductVo> getAllProducts() {
-        List<ProductVo> results = new ArrayList<ProductVo>();
-       
-        List<Product> productsList = this.productDAO.getAll();
-        for(Product pojo : productsList){
-            ProductVo productVo = new ProductVo();
-            productVo.setProductSku(pojo.getSku());
-            //TODO: Transfor Pojo into VO here
-            results.add(productVo);
+        List<ProductVo> productVoList = new ArrayList<ProductVo>();
+        List<Product> result = this.productDAO.getAll();
+        for (int i = 0; i < result.size(); i++) {
+            ProductVo tempProductVo = new ProductVo();
+            tempProductVo.setProductSku(result.get(i).getSku());
+            tempProductVo.setProductName(result.get(i).getName());
+            tempProductVo.setProductUnitPrice(result.get(i).getUnitPrice());
+            tempProductVo.setAvailableQuantity(result.get(i).getQuantity());
+            productVoList.add(tempProductVo);
         }
- 
-        return results;
-        
-        
-        
-        
-        
+        return productVoList;
+
     }
 
-    /* (non-Javadoc)
-     * @see com.kaplan.coding.mystore.business.impl.ProductService#updateProduct(com.kaplan.coding.mystore.business.vo.ProductVo)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.kaplan.coding.mystore.business.impl.ProductService#updateProduct(
+     * com.kaplan.coding.mystore.business.vo.ProductVo)
      */
     @Override
     public Boolean updateProduct(ProductVo productVo) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Product tempProduct = new Product();
+            tempProduct.setSku(productVo.getProductSku());
+            tempProduct.setName(productVo.getProductName());
+            tempProduct.setUnitPrice(productVo.getProductUnitPrice());
+            tempProduct.setQuantity(productVo.getAvailableQuantity());
+            this.productDAO.save(tempProduct);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    /* (non-Javadoc)
-     * @see com.kaplan.coding.mystore.business.impl.ProductService#saveProduct(com.kaplan.coding.mystore.business.vo.ProductVo)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.kaplan.coding.mystore.business.impl.ProductService#saveProduct(com
+     * .kaplan.coding.mystore.business.vo.ProductVo)
      */
     @Override
     public Boolean saveProduct(ProductVo productVo) {
@@ -59,8 +75,12 @@ public class ProductServiceImplementation implements ProductService {
         return null;
     }
 
-    /* (non-Javadoc)
-     * @see com.kaplan.coding.mystore.business.impl.ProductService#deleteProduct(com.kaplan.coding.mystore.business.vo.ProductVo)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.kaplan.coding.mystore.business.impl.ProductService#deleteProduct(
+     * com.kaplan.coding.mystore.business.vo.ProductVo)
      */
     @Override
     public Boolean deleteProduct(ProductVo productVo) {
