@@ -1,0 +1,16 @@
+<Context>
+	<!-- Default set of monitored resources -->
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+	<WatchedResource>META-INF/context.xml</WatchedResource>
+
+	<Resource name="jdbc/myStoreDS" auth="Container"
+		type="javax.sql.DataSource"
+		factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"
+		username="root" password="1234"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://127.0.0.1:3306/little_store?autoReconnect=true"
+		maxActive="10" maxIdle="2" maxWait="-1" removeAbandoned="true"
+		removeAbandonedTimeout="300" logAbandoned="true"/>
+
+			
+</Context>
