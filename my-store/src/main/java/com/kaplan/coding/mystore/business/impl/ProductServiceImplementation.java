@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.kaplan.coding.mystore.business.vo.ProductVo;
 import com.kaplan.coding.mystore.persistence.dao.ProductDAO;
@@ -19,6 +21,11 @@ import com.kaplan.coding.mystore.persistence.domain.Product;
  */
 public class ProductServiceImplementation implements ProductService {
     private static final Logger log = Logger.getLogger(ProductServiceImplementation.class);
+    
+    
+    
+    @Autowired()
+    @Qualifier("productDAO")
     private ProductDAO productDAO;
 
     /*
