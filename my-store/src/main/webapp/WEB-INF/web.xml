@@ -4,4 +4,72 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>my-store</param-value>
+	</context-param>
+
+	<!-- Log4J Configuration -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j/log4j-config.xml</param-value>
+	</context-param>
+
+	<!-- Spring Context Configuration -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/spring/daoApplicationContext.xml,
+			/WEB-INF/spring/serviceApplicationContext.xml
+		</param-value>
+	</context-param>
+
+	<!-- Log4J Listener -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!-- Spring Context Listener -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!--  Servlet Declarations
+	<servlet>
+		<servlet-name>webApplicationServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/conf/spring/webApplicationContext.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	 -->
+
+	<!--  Servlet Mappings
+	<servlet-mapping>
+		<servlet-name>webApplicationServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+	 -->
+
+	<!-- Session Time-out in minutes -->
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+
+	<!-- Welcome file -->
+	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- Reference to a DB Conection  -->
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/myStoreDS</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>  
 </web-app>
