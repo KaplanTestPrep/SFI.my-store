@@ -55,7 +55,7 @@ public class ProductServiceImplementation implements ProductService {
             tempProduct.setName(productVo.getProductName());
             tempProduct.setUnitPrice(productVo.getProductUnitPrice());
             tempProduct.setQuantity(productVo.getAvailableQuantity());
-            this.productDAO.save(tempProduct);
+            this.productDAO.update(tempProduct);
             return true;
         } catch (Exception e) {
             return false;
@@ -71,8 +71,17 @@ public class ProductServiceImplementation implements ProductService {
      */
     @Override
     public Boolean saveProduct(ProductVo productVo) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Product tempProduct = new Product();
+            tempProduct.setSku(productVo.getProductSku());
+            tempProduct.setName(productVo.getProductName());
+            tempProduct.setUnitPrice(productVo.getProductUnitPrice());
+            tempProduct.setQuantity(productVo.getAvailableQuantity());
+            this.productDAO.save(tempProduct);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /*
@@ -84,8 +93,17 @@ public class ProductServiceImplementation implements ProductService {
      */
     @Override
     public Boolean deleteProduct(ProductVo productVo) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Product tempProduct = new Product();
+            tempProduct.setSku(productVo.getProductSku());
+            tempProduct.setName(productVo.getProductName());
+            tempProduct.setUnitPrice(productVo.getProductUnitPrice());
+            tempProduct.setQuantity(productVo.getAvailableQuantity());
+            this.productDAO.delete(tempProduct);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
