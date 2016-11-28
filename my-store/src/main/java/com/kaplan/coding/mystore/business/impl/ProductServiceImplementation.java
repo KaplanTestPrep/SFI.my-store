@@ -6,15 +6,26 @@ package com.kaplan.coding.mystore.business.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import com.kaplan.coding.mystore.business.vo.ProductVo;
 import com.kaplan.coding.mystore.persistence.dao.ProductDAO;
 import com.kaplan.coding.mystore.persistence.domain.Product;
+
 
 /**
  * @author NJahan
  *
  */
 public class ProductServiceImplementation implements ProductService {
+    private static final Logger log = Logger.getLogger(ProductServiceImplementation.class);
+    
+    
+    
+    @Autowired()
+    @Qualifier("productDAO")
     private ProductDAO productDAO;
 
     /*
@@ -49,6 +60,7 @@ public class ProductServiceImplementation implements ProductService {
      */
     @Override
     public Boolean updateProduct(ProductVo productVo) {
+        log.debug("Executing to update product!");
         try {
             Product tempProduct = new Product();
             tempProduct.setSku(productVo.getProductSku());
@@ -56,8 +68,10 @@ public class ProductServiceImplementation implements ProductService {
             tempProduct.setUnitPrice(productVo.getProductUnitPrice());
             tempProduct.setQuantity(productVo.getAvailableQuantity());
             this.productDAO.update(tempProduct);
+            log.debug("Operation performed!");
             return true;
         } catch (Exception e) {
+            log.error("Exception!!",e);
             return false;
         }
     }
@@ -71,6 +85,7 @@ public class ProductServiceImplementation implements ProductService {
      */
     @Override
     public Boolean saveProduct(ProductVo productVo) {
+       
         try {
             Product tempProduct = new Product();
             tempProduct.setSku(productVo.getProductSku());
