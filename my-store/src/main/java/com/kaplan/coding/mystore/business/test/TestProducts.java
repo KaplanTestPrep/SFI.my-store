@@ -24,7 +24,7 @@ public class TestProducts {
     public void testingProduct(){
         ProductService testProductService = null;
         log.debug("test products");
-        testProductService.getAllProducts();
+        testProductService.getAllProducts(); 
         
     }
 
