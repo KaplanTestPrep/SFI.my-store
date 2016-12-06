@@ -6,6 +6,7 @@ package com.kaplan.coding.mystore.persistence.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,6 +23,7 @@ import com.kaplan.coding.mystore.persistence.domain.Orders;
  */
 public class OrdersDAOImplementation implements OrdersDAO {
 
+    private static final Logger log = Logger.getLogger(OrdersDAOImplementation.class);
     @Autowired
     @Qualifier("oracleSessionFactory")
     private SessionFactory sessionFactory;
@@ -46,6 +48,7 @@ public class OrdersDAOImplementation implements OrdersDAO {
             returnBoolean = false;
         }
         return returnBoolean; // return a boolean
+        //log.debug(Orders orders);
     }// #####################################################
 
     /*
