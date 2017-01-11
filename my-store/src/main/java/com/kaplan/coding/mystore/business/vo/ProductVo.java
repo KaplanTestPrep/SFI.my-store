@@ -5,11 +5,14 @@ package com.kaplan.coding.mystore.business.vo;
 
 import java.io.Serializable;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author NJahan
  *
  */
 public class ProductVo implements Serializable {
+    private static final Logger log = Logger.getLogger(ProductVo.class);
 
     private static final long serialVersionUID = -5122292678210156817L;
 
@@ -26,6 +29,7 @@ public class ProductVo implements Serializable {
      */
     public Integer getProductSku() {
         return productSku;
+       
     }
 
     /**
