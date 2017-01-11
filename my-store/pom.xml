@@ -61,7 +61,7 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
+			<version>1.2.17</version>
 		</dependency>
 
 		<!-- Servlet -->
@@ -114,8 +114,8 @@
 	</build>
 	<properties>
 		<java-version>1.6</java-version>
-		<org.springframework-version>4.0.3.RELEASE</org.springframework-version>
-		<hibernate.version>4.3.5.Final</hibernate.version>
+		<org.springframework-version>4.3.0.RELEASE</org.springframework-version>
+		<hibernate.version>5.2.5.Final</hibernate.version>
 	</properties>
 </project>
 

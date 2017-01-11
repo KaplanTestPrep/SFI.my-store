@@ -12,7 +12,10 @@
 
 
 	<!--LOGGERS: App-->
-	<!-- TODO: -->
+	<logger name = "com.kaplan" additivity = "true">
+        <level value = "DEBUG"/>
+        <appender-ref ref = "console"/>
+    </logger>
               
     <!--LOGGERS: Framework-->
     <logger name = "org.hibernate" additivity = "true">
@@ -35,7 +38,7 @@
 
     <!--ROOT-->
     <root>    
-        <level value = "INFO"/>
+        <level value = "ALL"/>
         <appender-ref ref = "console"/>
     </root>
   
