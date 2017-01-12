@@ -5,7 +5,6 @@ import org.apache.log4j.xml.DOMConfigurator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,10 +19,9 @@ public class TestProducts {
     @Autowired
     private ProductService productService ;
     private static final Logger log = Logger.getLogger(TestProducts.class);
-    static{DOMConfigurator.configure("file:src/main/webapp/WEB-INF/log4j/log4j-config-minimal.xml");}
     
-
-    
+    static{DOMConfigurator.configure("src/main/webapp/WEB-INF/log4j/log4j-config-minimal.xml");}
+   
     @SuppressWarnings("null")
     @Test
     
@@ -33,6 +31,7 @@ public class TestProducts {
         log.debug("test products");
         testProductService.getAllProducts(); 
         
+       
     }
 
 }
