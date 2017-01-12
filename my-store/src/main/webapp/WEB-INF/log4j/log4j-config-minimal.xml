@@ -19,7 +19,7 @@
               
     <!--LOGGERS: Framework-->
     <logger name = "org.hibernate" additivity = "true">
-        <level value = "DEBUG"/>
+        <level value = "WARN"/>
         <appender-ref ref = "console"/>
     </logger>
     <logger name = "org.hibernate.cfg" additivity = "false">
@@ -28,11 +28,11 @@
     </logger>
                     
     <logger name = "org.springframework" additivity = "false">
-        <level value = "WARN"/>
+        <level value = "INFO"/>
         <appender-ref ref = "console"/>
     </logger>
     <logger name = "org.springframework.orm" additivity = "false">
-        <level value = "INFO"/>
+        <level value = "WARN"/>
         <appender-ref ref = "console"/>
     </logger>
 
