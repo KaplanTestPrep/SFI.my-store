@@ -25,9 +25,9 @@ import com.kaplan.coding.mystore.persistence.domain.Product;
 public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
 
     @Autowired
-    @Qualifier("oracleSessionFactory")
+    //@Qualifier("oracleSessionFactory")
     private SessionFactory sessionFactory;
-    private Session currentSession = sessionFactory.getCurrentSession();
+    //private Session currentSession = sessionFactory.getCurrentSession();
 
     /*
      * (non-Javadoc)
@@ -36,11 +36,20 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
      * com.kaplan.coding.mystore.persistence.dao.ProductDAO#save(com.kaplan.
      * coding.mystore.persistence.domain.Product)
      */
+    
+    
     @Override
     public void save(Product product) {
 
         this.sessionFactory.getCurrentSession().save(product);
 
+    }
+
+    /**
+     * @param sessionFactory the sessionFactory to set
+     */
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     /*
@@ -88,7 +97,7 @@ public class ProductDAOImplementation<returnBoolean> implements ProductDAO {
     @Override
     public void saveOrUpdate(Product product) {
 
-        this.currentSession.saveOrUpdate(product);
+        this.sessionFactory.getCurrentSession().saveOrUpdate(product);
 
     }
 

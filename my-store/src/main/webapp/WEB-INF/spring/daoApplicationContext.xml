@@ -20,15 +20,22 @@
 		<property name="defaultAutoCommit" value="false"/>
 	</bean>
 	-->
-	<jee:jndi-lookup id="oracleDataSource" jndi-name="java:comp/env/jdbc/myStoreDS"/>
+	<bean id="oracleDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@rds-kbsdevdb8-east-dev-ora01-se1-229683044909.cayapxbk65pr.us-east-1.rds.amazonaws.com:1521:KBSDVDB8"/>
+		<property name="username" value="MYSTORE"/>
+		<property name="password" value="MYSTORE"/>
+		<property name="defaultAutoCommit" value="false"/>
+	</bean>
+	<!--  jee:jndi-lookup id="oracleDataSource" jndi-name="java:comp/env/jdbc/myStoreDS"-->
 	 
 	<!--============================= SessionFactory ===============================-->
-	<bean id="oraclelSessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="mySqlDataSource" />
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="oracleDataSource" />
 		<property name="configLocation">
-			<value>/WEB-INF/hibernate/mapping.cfg.xml</value>
-			<!-- <value>file:src/main/webapp/WEB-INF/hibernate/mapping.cfg.xml</value> -->
+			<!--<value>/WEB-INF/hibernate/mapping.cfg.xml</value>-->
+			 <value>file:src/main/webapp/WEB-INF/hibernate/mapping.cfg.xml</value> 
 		</property>
 		<property name="hibernateProperties">
 			<props>
@@ -57,9 +64,12 @@
 	
 
 	<!--==================  Annotation config  =====================-->
-    <context:annotation-config/>
+    <context:annotation-config base-package = "com.kaplan.coding.mystore"/>
+   
 	
 	<!-- ============================  DAOs  ================================== -->
-	<bean id="ProductDAO" class="????"/>
+	<bean id="productDAO" class="com.kaplan.coding.mystore.persistence.dao.impl.ProductDAOImplementation"/>
+	<bean id="ordersDAO" class="com.kaplan.coding.mystore.persistence.dao.impl.OrdersDAOImplementation"/>
+	
 		
 </beans>

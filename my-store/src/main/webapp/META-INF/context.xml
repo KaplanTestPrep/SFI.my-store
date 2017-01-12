@@ -6,11 +6,14 @@
 	<Resource name="jdbc/myStoreDS" auth="Container"
 		type="javax.sql.DataSource"
 		factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"
-		username="root" password="1234"
+		username="mystore" password="mystore"
 		driverClassName="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://127.0.0.1:3306/little_store?autoReconnect=true"
+		url="jdbc:oracle:thin:@rds-kbsdevdb8-east-dev-ora01-se1-229683044909.cayapxbk65pr.us-east-1.rds.amazonaws.com"
 		maxActive="10" maxIdle="2" maxWait="-1" removeAbandoned="true"
 		removeAbandonedTimeout="300" logAbandoned="true"/>
 
 			
 </Context>
+
+<!-- rds-kbsdevdb8-east-dev-ora01-se1-229683044909.cayapxbk65pr.us-east-1.rds.amazonaws.com -->
+<!-- jdbc:oracle:thin:@rds-kbs-qa-db01-vip.eng.kaplan.com:1521:KBSQA01","kbsshared", "kbsshared"  -->
