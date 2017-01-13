@@ -1,2 +1,17 @@
 *.classpath
 my-store/.project
+my-store/src/main/webapp/css/.DS_Store
+
+my-store/src/main/webapp/img/display/.DS_Store
+
+*.log
+
+*.1
+
+*.3
+
+my-store/src/main/webapp/log/hibernate.log
+
+my-store/src/main/webapp/log/hibernate.log.1
+
+my-store/src/main/webapp/log/hibernate.log.3
