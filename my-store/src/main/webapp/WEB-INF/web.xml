@@ -34,25 +34,25 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!--  Servlet Declarations
+	<!--  Servlet Declarations -->
 	<servlet>
 		<servlet-name>webApplicationServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/conf/spring/webApplicationContext.xml</param-value>
+			<param-value>/WEB-INF/spring/webApplicationContext.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	 -->
+	 
 
-	<!--  Servlet Mappings
+	<!--  Servlet Mappings -->
 	<servlet-mapping>
 		<servlet-name>webApplicationServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
-	 -->
+	 
 
 	<!-- Session Time-out in minutes -->
 	<session-config>
@@ -64,12 +64,13 @@
 		<welcome-file>/index.jsp</welcome-file>
 	</welcome-file-list>
 
-	<!-- Reference to a DB Conection  -->
+	<!-- Reference to a DB Conection  
 	<resource-ref>
 		<description>DB Connection</description>
 		<res-ref-name>jdbc/myStoreDS</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
 		<res-sharing-scope>Shareable</res-sharing-scope>
-	</resource-ref>  
+	</resource-ref>
+	  -->
 </web-app>
