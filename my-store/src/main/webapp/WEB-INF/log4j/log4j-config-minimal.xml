@@ -19,11 +19,11 @@
               
     <!--LOGGERS: Framework-->
     <logger name = "org.hibernate" additivity = "true">
-        <level value = "WARN"/>
+        <level value = "INFO"/>
         <appender-ref ref = "console"/>
     </logger>
     <logger name = "org.hibernate.cfg" additivity = "false">
-        <level value = "WARN"/>
+        <level value = "DEBUG"/>
         <appender-ref ref = "console"/>
     </logger>
                     
@@ -32,14 +32,8 @@
         <appender-ref ref = "console"/>
     </logger>
     <logger name = "org.springframework.orm" additivity = "false">
-        <level value = "WARN"/>
+        <level value = "DEBUG"/>
         <appender-ref ref = "console"/>
     </logger>
-
-    <!--ROOT-->
-    <root>    
-        <level value = "ALL"/>
-        <appender-ref ref = "console"/>
-    </root>
   
 </log4j:configuration>
