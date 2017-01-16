@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.apache.log4j.Logger;
+
+import com.kaplan.coding.mystore.business.test.TestProducts;
+
 /**
  * 
  * @author IAhmed
@@ -25,7 +29,7 @@ public class OrderItem implements Serializable{
      * 
      */
     private static final long serialVersionUID = 3527409010727340848L;
-
+    private static final Logger log = Logger.getLogger(OrderItem.class);
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PRODUCT")
     @Column(name ="ORDER_ITEM_ID",scale=10)
@@ -69,6 +73,7 @@ public class OrderItem implements Serializable{
     @Column(name = "ORDER_ITEM_ID")
     public Integer getOrderItemId() {
         return orderItemId;
+        //log.debug("Test");
     }
 
     public void setOrderItemId(Integer orderItemId) {

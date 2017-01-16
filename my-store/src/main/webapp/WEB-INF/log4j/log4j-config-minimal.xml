@@ -12,31 +12,28 @@
 
 
 	<!--LOGGERS: App-->
-	<!-- TODO: -->
-              
-    <!--LOGGERS: Framework-->
-    <logger name = "org.hibernate" additivity = "true">
+	<logger name = "com.kaplan" additivity = "true">
         <level value = "DEBUG"/>
         <appender-ref ref = "console"/>
     </logger>
+              
+    <!--LOGGERS: Framework-->
+    <logger name = "org.hibernate" additivity = "true">
+        <level value = "INFO"/>
+        <appender-ref ref = "console"/>
+    </logger>
     <logger name = "org.hibernate.cfg" additivity = "false">
-        <level value = "WARN"/>
+        <level value = "DEBUG"/>
         <appender-ref ref = "console"/>
     </logger>
                     
     <logger name = "org.springframework" additivity = "false">
-        <level value = "WARN"/>
+        <level value = "INFO"/>
         <appender-ref ref = "console"/>
     </logger>
     <logger name = "org.springframework.orm" additivity = "false">
-        <level value = "INFO"/>
+        <level value = "DEBUG"/>
         <appender-ref ref = "console"/>
     </logger>
-
-    <!--ROOT-->
-    <root>    
-        <level value = "INFO"/>
-        <appender-ref ref = "console"/>
-    </root>
   
 </log4j:configuration>
