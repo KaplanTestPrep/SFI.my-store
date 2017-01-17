@@ -3,16 +3,12 @@
  */
 package com.kaplan.coding.mystore.persistence.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.kaplan.coding.mystore.persistence.dao.OrdersDAO;
 import com.kaplan.coding.mystore.persistence.domain.Orders;
@@ -25,11 +21,9 @@ public class OrdersDAOImplementation implements OrdersDAO {
 
     private static final Logger log = Logger.getLogger(OrdersDAOImplementation.class);
     @Autowired
-    @Qualifier("oracleSessionFactory")
+    @org.springframework.beans.factory.annotation.Qualifier("mySessionFactory")
     private SessionFactory sessionFactory;
-    private Session currentSession = sessionFactory.getCurrentSession();
-    private Criteria criteria = currentSession.createCriteria(Orders.class);
-
+    
     // ###########
     /*
      * (non-Javadoc)
@@ -42,7 +36,7 @@ public class OrdersDAOImplementation implements OrdersDAO {
     public Boolean save(Orders orders) {
         Boolean returnBoolean;
         try {
-            this.currentSession.save(orders);
+            this.sessionFactory.getCurrentSession().save(orders);
             returnBoolean = true;
         } catch (Exception e) {
             returnBoolean = false;
@@ -62,7 +56,7 @@ public class OrdersDAOImplementation implements OrdersDAO {
     public Boolean update(Orders orders) {
         Boolean returnBoolean;
         try {
-            this.currentSession.update(orders);
+            this.sessionFactory.getCurrentSession().update(orders);
             returnBoolean = true;
         } catch (Exception e) {
             returnBoolean = false;
@@ -81,7 +75,7 @@ public class OrdersDAOImplementation implements OrdersDAO {
     public Orders findById(Integer id) {
         Orders tempOrders = null;
         try {
-            tempOrders = (Orders) this.currentSession
+            tempOrders = (Orders) this.sessionFactory.getCurrentSession()
                     .createCriteria(Orders.class)
                     .add(Restrictions.eq("orderId", id)).uniqueResult();
             return tempOrders;
@@ -98,7 +92,7 @@ public class OrdersDAOImplementation implements OrdersDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Orders> getAll() {
-        return (List<Orders>) this.criteria.list();
+        return (List<Orders>) this.sessionFactory.getCurrentSession().createCriteria(Orders.class).list();
 
     }// #####################################################
 
@@ -106,7 +100,7 @@ public class OrdersDAOImplementation implements OrdersDAO {
     public Boolean saveOrUpdate(Orders orders) {
         Boolean returnBoolean = false;
         try {
-            this.currentSession.saveOrUpdate(orders);
+            this.sessionFactory.getCurrentSession().saveOrUpdate(orders);
             returnBoolean = true;
         } catch (Exception e) {
         }
@@ -115,7 +109,7 @@ public class OrdersDAOImplementation implements OrdersDAO {
 
     @Override
     public void delete(Orders orders) {
-        currentSession.delete(orders);
+        sessionFactory.getCurrentSession().delete(orders);
 
     }// #####################################################
 
@@ -128,7 +122,7 @@ public class OrdersDAOImplementation implements OrdersDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Orders> findByProperty(String propertyName, Object value) {
-        return this.criteria.add(Restrictions.eq(propertyName, value)).list();
+        return this.sessionFactory.getCurrentSession().createCriteria(Orders.class).add(Restrictions.eq(propertyName, value)).list();
     }
 }// ##############--End of
 // OrdersDAOImplementation--#######################################
