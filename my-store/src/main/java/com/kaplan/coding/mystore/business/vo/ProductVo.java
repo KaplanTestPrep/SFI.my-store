@@ -22,7 +22,7 @@ public class ProductVo implements Serializable {
 
     private Integer availableQuantity;
 
-    private Integer productUnitPrice;
+    private Double productUnitPrice;
 
     /**
      * @return the productSku
@@ -73,7 +73,7 @@ public class ProductVo implements Serializable {
     /**
      * @return the productUnitPrice
      */
-    public Integer getProductUnitPrice() {
+    public Double getProductUnitPrice() {
         return productUnitPrice;
     }
 
@@ -81,7 +81,7 @@ public class ProductVo implements Serializable {
      * @param productUnitPrice
      *            the productUnitPrice to set
      */
-    public void setProductUnitPrice(Integer productUnitPrice) {
+    public void setProductUnitPrice(Double productUnitPrice) {
         this.productUnitPrice = productUnitPrice;
     }
 
