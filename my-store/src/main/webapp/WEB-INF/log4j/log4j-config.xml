@@ -40,7 +40,10 @@
     
 
 	<!--LOGGERS: App-->   
-	<!--TODO-->  
+	<logger name = "com.kaplan" additivity = "true">
+        <level value = "DEBUG"/>
+        <appender-ref ref = "app"/>
+    </logger>
               
     <!--LOGGERS: Framework-->
     <logger name = "org.hibernate" additivity = "true">

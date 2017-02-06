@@ -36,7 +36,7 @@ public class Product implements Serializable {
     @Column(name = "QUANTITY", precision = 5)
     private Integer quantity; // QUANTITY; // NUMBER(5,0)
     @Column(name = "UNIT_PRICE", precision = 5, scale = 2)
-    private Integer unitPrice; // UNIT_PRICE; // NUMBER(5,2)
+    private Double unitPrice; // UNIT_PRICE; // NUMBER(5,2)
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
     private Set<OrderItem> orderItem = new HashSet<OrderItem>(0);
@@ -78,11 +78,11 @@ public class Product implements Serializable {
     }// --------------------
 
     @Column(name = "UNIT_PRICE")
-    public Integer getUnitPrice() {
+    public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Integer unitPrice) {
+    public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
 

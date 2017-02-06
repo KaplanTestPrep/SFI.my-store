@@ -27,7 +27,8 @@ public class TestProducts {
 	@Test
 	public void testingProduct() {
 		log.debug("test retrieving products - Invoke ProductService");
-		productService.getAllProducts();
+		log.debug(productService.getAllProducts());
+		
 	}
 
 }
