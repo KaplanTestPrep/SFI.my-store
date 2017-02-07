@@ -13,26 +13,26 @@
 
 	<!--LOGGERS: App-->
 	<logger name = "com.kaplan" additivity = "true">
-        <level value = "DEBUG"/>
+        <level value = "ALL"/>
         <appender-ref ref = "console"/>
     </logger>
               
     <!--LOGGERS: Framework-->
     <logger name = "org.hibernate" additivity = "true">
-        <level value = "INFO"/>
+        <level value = "WARN"/>
         <appender-ref ref = "console"/>
     </logger>
     <logger name = "org.hibernate.cfg" additivity = "false">
-        <level value = "DEBUG"/>
+        <level value = "WARN"/>
         <appender-ref ref = "console"/>
     </logger>
                     
     <logger name = "org.springframework" additivity = "false">
-        <level value = "INFO"/>
+        <level value = "WARN"/>
         <appender-ref ref = "console"/>
     </logger>
     <logger name = "org.springframework.orm" additivity = "false">
-        <level value = "DEBUG"/>
+        <level value = "WARN"/>
         <appender-ref ref = "console"/>
     </logger>
   
