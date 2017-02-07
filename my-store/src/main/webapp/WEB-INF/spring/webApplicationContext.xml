@@ -20,14 +20,6 @@
     <!--==================  Location of Controllers  =====================-->
 	<context:component-scan base-package="com.kaplan.coding.mystore.web.controller"/>
 		
-	<!--==================  InternalResourceViewResolver  =====================	-->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-		<property name="prefix" value="/jsp/"/>
-    	<property name="suffix" value=".jsp"/>
-	</bean>
-	
-	
 	<!-- Resolves localized messages*.properties file(s) in the application to allow for internationalization -->
 	<bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource" p:basenames="WEB-INF/i18n/messages" p:fallbackToSystemLocale="false"/>
 	
@@ -43,7 +35,7 @@
 	<bean class="org.springframework.web.servlet.theme.CookieThemeResolver" id="themeResolver" p:cookieName="theme" p:defaultThemeName="standard"/>
 	
 	<!--==================  Tiles Integration - View Resolver  =====================-->
-	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="tilesViewResolver">
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>      
     </bean>
     
