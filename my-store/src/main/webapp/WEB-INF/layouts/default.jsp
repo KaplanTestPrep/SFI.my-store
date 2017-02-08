@@ -8,8 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=8" />		
 		<spring:url value="/images/favicon.ico" var="favicon" />
 		<link rel="SHORTCUT ICON" href="${favicon}" />
-		<title></title>
-
+		<title>This is a Default Template</title>
 		<link href="${pageContext.request.contextPath}/css/displaytag.css" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/css/standard.css" rel="stylesheet" type="text/css">
 	</head>

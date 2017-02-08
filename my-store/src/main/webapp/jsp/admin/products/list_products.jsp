@@ -5,7 +5,9 @@
 <%@ taglib uri="http://displaytag.sf.net/el" prefix="display-el" %>
 
 <h2><fmt:message key="products.list.title"/></h2>
-<P align="left"><fmt:message key="products.list.msg"/></font></P>
+<P align="left"><fmt:message key="products.list.msg"/></P>
+
+<P>Method executed: ${KEY_METHOD}</P>
 
 <table width="80%" cellspacing="1" cellpadding="1" border="0" align="center">
 <tr>
