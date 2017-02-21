@@ -16,21 +16,10 @@
     
     <!-- Properties file certain specific App Stuff -->
     <context:property-placeholder location="classpath:my-application.properties"/>
-
-	<!--==================  Annotation config  =====================-->
-    <context:annotation-config/>  
        
     <!--==================  Location of Controllers  =====================-->
-	<context:component-scan base-package="???"/>
+	<context:component-scan base-package="com.kaplan.coding.mystore.web.controller"/>
 		
-	<!--==================  InternalResourceViewResolver  =====================	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-		<property name="prefix" value="/jsp/"/>
-    	<property name="suffix" value=".jsp"/>
-	</bean>
-	-->
-	
 	<!-- Resolves localized messages*.properties file(s) in the application to allow for internationalization -->
 	<bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource" p:basenames="WEB-INF/i18n/messages" p:fallbackToSystemLocale="false"/>
 	
@@ -45,21 +34,16 @@
 	<!-- Stores preferred theme configuration in a cookie -->
 	<bean class="org.springframework.web.servlet.theme.CookieThemeResolver" id="themeResolver" p:cookieName="theme" p:defaultThemeName="standard"/>
 	
-	<!-- MultipartResolver to help File Upload -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="50000"/><!-- in bytes -->
-	</bean>
-        
 	<!--==================  Tiles Integration - View Resolver  =====================-->
-	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="tilesViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>      
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>      
     </bean>
     
     <!--==================  Tiles Configuration  =====================-->
-    <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" id="tilesConfigurer">
+    <bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" id="tilesConfigurer">
         <property name="definitions">
             <list>
-                <value>/WEB-INF/conf/layouts/layouts.xml</value>
+                <value>/WEB-INF/layouts/layouts.xml</value>
                 <!-- Scan views directory for Tiles configurations -->
                 <value>/jsp/**/views.xml</value>
             </list>

@@ -3,14 +3,14 @@
 	<WatchedResource>WEB-INF/web.xml</WatchedResource>
 	<WatchedResource>META-INF/context.xml</WatchedResource>
 
-	<Resource name="jdbc/myStoreDS" auth="Container"
+	<!-- Resource name="jdbc/myStoreDS" auth="Container"
 		type="javax.sql.DataSource"
 		factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"
 		username="mystore" password="mystore"
 		driverClassName="com.mysql.jdbc.Driver"
 		url="jdbc:oracle:thin:@rds-kbsdevdb8-east-dev-ora01-se1-229683044909.cayapxbk65pr.us-east-1.rds.amazonaws.com"
 		maxActive="10" maxIdle="2" maxWait="-1" removeAbandoned="true"
-		removeAbandonedTimeout="300" logAbandoned="true"/>
+		removeAbandonedTimeout="300" logAbandoned="true"/-->
 
 			
 </Context>
