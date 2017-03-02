@@ -6,6 +6,6 @@
 
 <div id="side-bar">
 	<UL>
-    <LI><a href="<c:url value="/showLandingPage.do"/>"><fmt:message key="index.title"/></a> 
+    <LI><a href="<c:url value="/"/>"><fmt:message key="index.title"/></a> 
 	</UL>	     
 </div>
