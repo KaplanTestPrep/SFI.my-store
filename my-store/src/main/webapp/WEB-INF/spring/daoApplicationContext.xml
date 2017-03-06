@@ -34,8 +34,8 @@
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="oracleDataSource" />
 		<property name="configLocation">
-			<value>/WEB-INF/hibernate/mapping.cfg.xml</value>
-			<!--<value>file:src/main/webapp/WEB-INF/hibernate/mapping.cfg.xml</value>--> 
+			<!-- <value>/WEB-INF/hibernate/mapping.cfg.xml</value>-->
+			<value>file:src/main/webapp/WEB-INF/hibernate/mapping.cfg.xml</value>
 		</property>
 		<property name="hibernateProperties">
 			<props>
