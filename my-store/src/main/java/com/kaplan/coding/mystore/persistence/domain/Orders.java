@@ -32,7 +32,7 @@ public class Orders implements Serializable {
     @Column(name = "ID")
     private Integer orderId; // ID; // NUMBER(10,0)
     @Column(name = "AMOUNT", precision = 2, scale = 5)
-    private Integer amount;// AMOUNT; // NUMBER(5,2)
+    private double amount;// AMOUNT; // NUMBER(5,2)
     @Column(name = "CREATED_DATE")
     private Date createdDate; // CREATED_DATE
 
@@ -65,11 +65,11 @@ public class Orders implements Serializable {
     }// ------------------
 
     @Column(name = "AMOUNT")
-    public Integer getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }// ---------------------------
 

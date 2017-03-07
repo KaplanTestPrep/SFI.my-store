@@ -31,7 +31,7 @@ public class OrderItem implements Serializable{
     private static final long serialVersionUID = 3527409010727340848L;
     private static final Logger log = Logger.getLogger(OrderItem.class);
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PRODUCT")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_ORDER_ITEM")
     @Column(name ="ORDER_ITEM_ID",scale=10)
     private Integer orderItemId; // ORDER_ITEM_ID;// NUMBER(10,0)
     
@@ -39,7 +39,7 @@ public class OrderItem implements Serializable{
     private Integer quantity; // SOLD_QUANTITY;// NUMBER(5,0)
     
     @Column(name ="UNIT_PRICE",precision=2,scale=5)
-    private Integer unitPrice; // UNIT_PRICE;// NUMBER(5,2)
+    private double unitPrice; // UNIT_PRICE;// NUMBER(5,2)
     // private Integer productSku; //PRODUCT_SKU;// NUMBER(20,0)
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -65,7 +65,7 @@ public class OrderItem implements Serializable{
     @Override
     public String toString() {
         return "OrderItem [orderItemId=" + orderItemId + ", antity=" + quantity
-                + ", unitPrice=" + unitPrice;
+                + ", unitPrice=" + unitPrice+" ]";
     }
 
     @Id
@@ -92,15 +92,16 @@ public class OrderItem implements Serializable{
 
     // ------------------------------
     @Column(name = "UNIT_PRICE")
-    public Integer getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Integer unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
     // -------------------------
+    @Column(name = "PRODUCT_SKU")
     public Product getProduct() {
         return product;
     }
@@ -110,6 +111,7 @@ public class OrderItem implements Serializable{
     }
 
     // ---------------
+    @Column(name = "ORDER_ID")
     public Orders getOrders() {
         return orders;
     }
