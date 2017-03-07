@@ -24,5 +24,7 @@
 	
 
 	<!--==================  Business Objects/Service Objects  =============-->
-	<bean id="productService" class="com.kaplan.coding.mystore.business.impl.ProductServiceImplementation"/>	
+	<bean id="productService" class="com.kaplan.coding.mystore.business.impl.ProductServiceImplementation"/>
+    <bean id="ordersService" class="com.kaplan.coding.mystore.business.impl.OrdersServiceImplementation"/>    	
+    
 </beans>
