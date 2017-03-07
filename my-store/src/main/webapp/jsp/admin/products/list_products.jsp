@@ -14,9 +14,9 @@
 	<td align="center">
 	<display:table name="requestScope.KEY_LIST_ITEMS" pagesize="13" sort="list" export="true" requestURI="/products/listAllProducts.htm" id="row">
 		<display:column title="SKU" property="productSku" sortable="true" maxWords="7"/>
-		<display:column titleKey="product.productName" property="productName" maxWords="15"/>
-		<display:column titleKey="product.availableQuantity" property="availableQuantity"  sortable="true"/>
-		<display:column titleKey="product.productUnitPrice" sortable="true" property="productUnitPrice"></display:column>
+		<display:column title="product.productName" property="productName" sortable="true" maxWords="15"/>
+		<display:column title="product.availableQuantity" property="availableQuantity"  sortable="true"/>
+		<display:column title="product.productUnitPrice" sortable="true" property="productUnitPrice"></display:column>
 	</display:table>
 	</td>
 </tr>

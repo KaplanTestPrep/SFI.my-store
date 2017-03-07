@@ -14,7 +14,7 @@
 	<td align="center">
 	<display:table name="requestScope.KEY_LIST_ITEMS" pagesize="13" sort="list" export="true" requestURI="/products/listAllProducts.htm" id="row">
 		<display:column title="ID" property="orderID" sortable="true" maxWords="7"/>
-		<display:column title="Amount" property="amount" maxWords="15"/>
+		<display:column title="Amount" property="amount" sortable="true" maxWords="15"/>
 		<display:column title="Created_date" property="createdDate"  sortable="true"/>
 	</display:table>
 	</td>
