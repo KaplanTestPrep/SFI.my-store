@@ -1,6 +1,8 @@
 <html>
 <body>
 <h2>Welcome to My Store!!!</h2>
-<img src="http://wallpaper-gallery.net/images/hd-wallpaper/hd-wallpaper-9.jpg" alt="Not my shot" style="width:700px;height:460px;"></img>
+<img src="${pageContext.request.contextPath}/img/display/Optimized-MyStoreLogo.jpg" /><br><br>
+<input type="button" value="Go to orders page" onclick="window.location.href='${pageContext.request.contextPath}/orders/listAllOrdersVO.htm'" /><br><br>
+<input type="button" value="Go to products page" onclick="window.location.href='${pageContext.request.contextPath}/products/listAllProducts.htm'" />
 </body>
 </html>
